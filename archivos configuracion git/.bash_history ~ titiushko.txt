@@ -1,0 +1,10 @@
+git fetch origin refs/heads/*:refs/remotes/origin/*
+git rebase origin/master
+git push origin HEAD:refs/heads/master
+git checkout -b rama -f origin/master
+git commit -a -m ""
+git reset --soft HEAD~1 && git reset
+git reset --hard origin/master
+git checkout -- . && git clean -fd
+git status
+cd F:/tito.miguel/repositorios

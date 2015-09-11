@@ -1,0 +1,32 @@
+[user]
+	name = Mario Andrés Yepes C
+	email = marioy47@gmail.com
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	pager = true
+	status = auto
+	ui = true
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = red
+[alias]
+	ci = commit
+	co = checkout
+	st = status
+	lg = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+[core]
+	excludesfile = /Users/Mario/.gitignore_global
+	autocrlf = input
+	pager = less -FRSX
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f

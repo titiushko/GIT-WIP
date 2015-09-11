@@ -1,0 +1,7 @@
+C:\Users\tito.miguel
+	.gitconfig
+	.bash_history
+C:\tito.miguel\programas\herramientas\git\repositorios\App\.git
+	config
+C:\Users\tito.miguel\Documents
+	gitignore_global.txt

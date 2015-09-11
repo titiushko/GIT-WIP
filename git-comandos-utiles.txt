@@ -1,0 +1,15 @@
+git add -u files: Añade al stash tanto los ficheros nuevos/modificados como los eliminados
+git commit -m '<message>': Commit al branch actual de los cambios en el stash
+git checkout -b <branch>: Crea un nuevo branch y se cambia a él
+git branch: lista las ramas locales, (-r los remotos, y -a todos)
+git branch <branch>: Crea un nuevo branch y se mantiene en el actual
+git branch -d <branch>: Elimina un branch
+git checkout <branch>: Cambia a un branch diferente
+git status: Comprueba el estado del stash
+git push <remote> <branch>: Envía los cambios de un branch al repositorio remoto
+git remote add <alias> <url>: Añade un repositorio remoto
+git remote rm <alias>: Elimina un repositorio remoto
+git remote rename <alias> <newAlias>: Cambia el alias de un repositorio remoto
+git remote set-url <alias> <newURL>: Cambia la URL de un repositorio remoto
+git fetch <remote>: Actualiza los datos desde el repositorio remoto
+git pull <remote>: hace un fetch seguido de un merge del repositorio remoto en el local

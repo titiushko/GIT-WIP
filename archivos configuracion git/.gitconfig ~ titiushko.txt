@@ -1,0 +1,13 @@
+[user]
+	name = Javier Galdámez
+	email = javier.galdamez@creativaconsultores.com
+[core]
+	autocrlf = true
+	excludesfile = C:\\Users\\tito.miguel\\Documents\\.gitignore-global
+[alias]
+	bajar = fetch -v origin refs/heads/master:refs/remotes/origin/master
+	subir = push -v origin HEAD:refs/for/master
+	actualizar = rebase -v origin/master
+	restaurar = reset --hard origin/master
+	estado = status
+	diferencia = diff

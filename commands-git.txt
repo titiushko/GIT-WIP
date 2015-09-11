@@ -1,0 +1,173 @@
+CONECTAR CUENTA DE USUARIO A UN REPOSITORIO
+git remote add origin https://<nickname | nombre_usuario>@bitbucket.org/titiushko/<nombre_repositorio>.git
+
+CLONAR (DESCARGAR DEL SERVIDOR) UN REPOSITORIO
+git clone https://<nickname | nombre_usuario>@bitbucket.org/titiushko/<nombre_repositorio>.git
+
+CONFIGURACION DE USUARIO
+git config --global user.name "<nickname | nombre_usuario>"
+git config --global user.email <correo_usuario>
+
+PUSH
+- subir y actualizar todas las referencias remotas
+git push -u origin --all
+
+- subir solo la rama indicada (HEAD apunta a la rama local seleccionada) (fuente:destino)
+git push origin HEAD:refs/for/<nombre_rama_remota>
+-- otra forma
+eclipse: +HEAD:refs/for/<nombre_rama_remota>
+
+FETCH
+- actualizar solo la rama indicada (fuente:destino)
+git fetch origin refs/heads/<nombre_rama_remota>:refs/remotes/origin/<nombre_rama_local>
+-- otra forma
+eclipse: +refs/heads/<nombre_rama_remota>:refs/remotes/origin/<nombre_rama_local>
+
+REBASE
+- actualizar la rama seleccionada a partir de otra rama local, una rama remota o un commit
+git rebase <nombre_rama_local | origin/nombre_rama_remota | id_commit | nombre_etiqueta>
+
+BRANCH
+[local]
+- crear y seleccionar
+git checkout -b <nombre_nueva_rama_local> <nombre_rama_local | origin/nombre_rama_remota | id_commit | nombre_etiqueta>
+
+- eliminar
+git branch -D <nombre_rama_local>
+
+- cambiar nombre
+git branch -m <nombre_rama_local> <nuevo_nombre_rama_local>
+
+- seleccionar
+git checkout <nombre_rama_local>
+
+- ver ramas locales
+git branch
+
+- ver ramas locales y comentario del ultimo commit de cada rama
+git branch -v
+
+- ver los datos de la rama junto con el ultimo commit en la rama
+git show <nombre_rama_local>
+
+[remoto]
+- crear
+git push -f origin master:<nombre_rama_remota>
+
+- eliminar
+git push origin :<nombre_rama_remota>
+-- otra forma
+git push origin --delete <nombre_rama_remota>
+
+- ver ramas remotas
+git branch -r
+
+- ver ramas locales y remotas
+git branch -a
+
+- ver los datos de la rama junto con el ultimo commit en la rama
+git show remotes/origin/<nombre_rama_remota>
+
+- inspeccionar un repositorio remoto
+git remote show origin
+
+COMMIT
+[local]
+- agregar al commit archivos que se han modificado
+git add <ruta completa, nombre y extencion de archivo>
+
+- agregar al commit todos los archivos que se han modificado
+git add <. | *>
+
+- registrar los cambios en el repositorio realizando commit
+git commit
+
+- agregar al commit todos los archivos que se han modificado y registrar los cambios en el repositorio realizando commit
+git commit -a
+
+- agregar al commit todos los archivos que se han modificado, registrar los cambios en el repositorio realizando commit y agregar el comentario del commit
+git commit -a -m "<comentario descriptivo del commit>"
+
+- fusionar varios commits en uno solo commit
+git reset --soft HEAD~<numero de encabezados que se quiere fusionar>
+git commit -a -m "<comentario descriptivo del commit>"
+
+- deshacer forzosamente todos los cambios locales
+git reset --hard <nombre_rama_local | origin/nombre_rama_remota | id_commit | nombre_etiqueta>
+
+- revertir commits
+git reset --soft HEAD~<numero de encabezados>
+
+- remover todos los archivos que se agregaron al commit
+git reset
+
+- ver los datos un commit
+git show <id_commit>
+
+[remoto]
+- deshacer el ultimo cambio en el repositorio remoto (commit y push)
+git reset --hard HEAD~1
+git push origin HEAD --force
+
+CLEAN
+- limpiar todos los cambios que no se incluiran en el commit
+git checkout -- .
+
+- borrar todos los archivos no versionados
+git clean -fd
+
+TAG
+- listar todas las etiquetas disponibles con su comentario descriptivo
+git tag
+
+- crear una etiqueta anotada
+git tag -a <nombre_etiqueta>
+
+- crear una etiqueta anotada e incluir el comentario de la etiqueta
+git tag -a <nombre_etiqueta> -m "<comentario descriptivo de la etiqueta>"
+
+- eliminar una etiqueta anotada
+git tag -d <nombre_etiqueta>
+
+- ver los datos de la etiqueta junto con el commit en el que fue etiquetada
+git show <nombre_etiqueta>
+
+- subir una etiqueta al repositorio
+git push origin <nombre_etiqueta>
+
+- subir todas las etiquetas pendientes al repositorio
+git push origin --tags
+
+[remoto]
+- eliminar una etiqueta remota
+git push origin :refs/tags/<nombre_etiqueta>
+
+LOG
+- mostrar la lista de todos los commits hechos en el repositorio
+git log
+
+- mostrar todas las diferencias en cada commit
+git log -p
+
+- mostrar todos los commits hechos con un archivo en especifico para ver el historial de un archivo
+git log <ruta completa | nombre y extencion de archivo>
+
+- mostrar todas las diferencias en cada commit de un archivo
+git log -p <ruta completa | nombre y extencion de archivo>
+-- otra forma
+git whatchanged -p <ruta completa | nombre y extencion de archivo>
+
+- mostrar la totalidad de la historia de un archivo, incluyendo la historia mas alla de renombra y con las diferencias de cada cambio
+git log --follow -p <ruta completa | nombre y extencion de archivo>
+
+- mostrar id_commit, autor, fecha + hora y linea completa de codigo para cada linea de un archivo
+git blame <nombre y extencion de archivo>
+
+REFLOG
+- mostrar los grupos de cambios despues de reescribir la historia del estado antiguo de una rama
+git reflog
+
+- regresar a un estado o punto de la historia de una rama
+git reset --hard HEAD@{<numero de encabezado>}
+-- otra forma
+git reset --hard <id_commit>
