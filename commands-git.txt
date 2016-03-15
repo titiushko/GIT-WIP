@@ -171,3 +171,7 @@ git reflog
 git reset --hard HEAD@{<numero de encabezado>}
 -- otra forma
 git reset --hard <id_commit>
+
+MERGE
+- fusionar un commit a la rama seleccionada
+git merge [<options>] <msg> HEAD <commit>
