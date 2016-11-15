@@ -1,0 +1,47 @@
+Ahead es el número de commits en la rama develop que no existen en la rama master.
+Behind está el número de commits en la rama master que no existen en rama develop.
+
+Ahead y behind son casi como una especie de métricas de "edad".
+El número ahead indica aproximadamente cuánto impacto tendrá la rama develop en la rama master si se fusiona (merge).
+El número behind indica cuánto trabajo ha ocurrido en la rama master desde que se inició rama develop.
+
+El número behind es útil para juzgar si una rama es probable que se fusionen de manera limpia.
+Cuando ha ocurrido mucho trabajo en la rama master, es más probable que las dos ramas hayan modificado la misma línea(s).
+Cuando behind es grande, es una señal de que probablemente debería fusionar la rama master en rama develop para sincronizar.
+Una vez que se fusiona la rama master en rama develop, behind será 0.
+
+==============================================================================================================================================
+
+Truco para comparar dos ramas (cualquiera dos) a nivel local y mostrar cuántos commits ahead está cada rama de la otra:
+$ git rev-list --left-right --count master...develop
+
+Que le da la salida como:
+1	7
+
+Lo que significa tanto como: en comparación con la rama master, la rama develop es 7 commits ahead y 1 commit behind.
+También se puede comparar ramas como origin/master...master para averiguar cuántos commits está una rama por delante(ahead)/detrás(behind) de su rama remota.
+
+==============================================================================================================================================
+
+De manera visual:
+
+° - ° - A - ° - B
+      \
+        ° - C
+
+A es 2 commit behind y 0 commit ahead de B
+B es 0 commit behind y 2 commit ahead de A
+C es 1 commit behind y 2 commit ahead de A
+C es 3 commit behind y 2 commit ahead de B
+
+Así que "behind" significa que la otra rama tiene commits y ésta no los tiene, y "ahead" significa que ésta rama tiene commits que la otra no.
+
+==============================================================================================================================================
+
+git pull (o mejor dicho, la parte de git merge que hace pull) resolverá "ahead" y "behind".
+
+Rama es N commits behind; significa que hay N nuevos (unmerged) commits en la rama tracked por la rama actual.
+Rama es N commits ahead; significa que la rama tiene N nuevos commits, que no se han fusionado en la rama tracked todavía.
+
+Una vez hecho pull (merge los cambios remotos en los locales) y hecho push (publicando los cambios y fusionado con la remota),
+la rama y la rama remota apuntarán al mismo commit, por lo que la rama no está ahead ni behind.
