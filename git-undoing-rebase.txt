@@ -1,0 +1,11 @@
+Deshaciendo git rebase
+Una de las mayores ventajas que le encuentro a Git es que antes de que hagas push de tus cambios, puedes deshacer todo lo que
+has hecho, y aunque git rebase junte commits en uno solo, te da la posibilidad de investigar qué ha pasado y deshacer tus
+cambios, incluso los rebase. Os presento git reflog.
+Una vez hecho nuestro rebase anterior, si utilizamos git reflog nos da una salida como esta:
+Ya podréis ver que es un histórico bastante adecuado de todo lo que ha pasado en nuestra línea de comandos, permitiéndonos
+lanzar comandos como el siguiente:
+git reset --hard HEAD@{8}
+Este comando nos dejará justo después de hacer el tercer commit, pero mucho cuidado que destruirá todos los cambios posteriores.
+De esta manera podremos empezar de nuevo nuestro rebase o corregir el error que necesitábamos revisar. Podéis encontrar más
+información práctica sobre git reflog en este hilo de stackoverflow.
